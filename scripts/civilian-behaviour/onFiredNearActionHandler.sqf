@@ -1,6 +1,7 @@
 _civilian = _this select 0;
 // Disable fleeing
-_civilian allowFleeing 0; 
+_civilian allowFleeing 0;
+//_civilian setVariable ["civilianIsInCover", false, false]; 
 
 _civilian addEventHandler ["FiredNear",  
 { 
@@ -15,6 +16,7 @@ _civilian addEventHandler ["FiredNear",
 		}  
 	} forEach _buildings;
 
+
 	// Select the first enterable building, and let's assume that it's the closest
 	_selectedBuilding = _enterableBuildings select 0;
 
@@ -23,6 +25,17 @@ _civilian addEventHandler ["FiredNear",
 
 	// Select one of those positions to be used as a waypoint destination
 	_destination = _possiblePositions select (floor random(count _possiblePositions));
+
+	if (isNil "_destination") then {
+
+		_destination = [getPos (_this select 0), 15, 40, 0, 0, 0, 0, [], getPos (_this select 0), getPos (_this select 0)] call BIS_fnc_findSafePos;
+
+		hint format ["No destination found for unit, set to %1.", _destination];
+	};
+	
+
+
+	
 
 	// Get the number of waypoints currently set for the civilian group
 	_civilianGroup = group (_this select 0);
@@ -34,30 +47,31 @@ _civilian addEventHandler ["FiredNear",
 		deleteWaypoint[_civilianGroup, 0];
 	};
 
-// Add a new waypoint set with the destination just selected
-_waypoint = (_civilianGroup) addWaypoint [_destination, 0];
-_waypoint setWaypointType "MOVE";
+	// Add a new waypoint set with the destination just selected
+	_waypoint = (_civilianGroup) addWaypoint [_destination, 0];
+	_waypoint setWaypointType "MOVE";
+	_civilianGroup setSpeedMode "FULL";
 
-// Remove any 'firedNear' event handlers to avoid too much spam
-(_this select 0) removeAllEventHandlers "FiredNear";
+	// Remove any 'firedNear' event handlers to avoid too much spam
+	(_this select 0) removeAllEventHandlers "FiredNear";
 
-// Spawn a new process to get the civilian prone when the destination is reached
-[_civilianGroup, _waypoint] spawn 
-{
-	_civilianGroup = _this select 0;
-	_leadCivilian = (units _civilianGroup) select 0;
-	_waypoint = _this select 1;
-	hint format["Spawn script fired: %1", _this select 0];
-	waitUntil {
-		if (isNull _civilianGroup) exitWith {true};
-		sleep 1;
+	// Spawn a new process to get the civilian prone when the destination is reached
+	[_civilianGroup, _waypoint] spawn 
+	{
+		_civilianGroup = _this select 0;
+		_leadCivilian = (units _civilianGroup) select 0;
+		_waypoint = _this select 1;
+		
+		waitUntil {
+			if (isNull _civilianGroup) exitWith {true};
+			sleep 1;
 
-		_metersFromWayPoint = _leadCivilian distance2D waypointPosition _waypoint;
+			_metersFromWayPoint = _leadCivilian distance waypointPosition _waypoint;
 
-		_metersFromWayPoint < 4;
+			_metersFromWayPoint < 2;
+		};
+
+		_leadCivilian setUnitPos "DOWN";
 	};
-
-	_leadCivilian setUnitPos "DOWN";
-};
 
 }];
