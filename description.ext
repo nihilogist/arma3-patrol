@@ -1,1 +1,14 @@
 disableChannels[]={{0,true,true},{1,false,true}};
+
+class CfgDebriefing
+{  
+	class End1
+	{
+		title = "Operational debrief";
+		subtitle = "Patrol villages west of FOB Peregrine";
+		description = "2nd Squad successfully carried out a patrol, encompassing the villages of Ahmaday and Landay.";
+		pictureBackground = "";
+		picture = "b_inf";
+		pictureColor[] = {0.0,0.3,0.6,1};
+	};
+};
