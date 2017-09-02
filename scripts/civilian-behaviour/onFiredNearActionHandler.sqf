@@ -1,10 +1,14 @@
 _civilian = _this select 0;
 // Disable fleeing
 _civilian allowFleeing 0;
-//_civilian setVariable ["civilianIsInCover", false, false]; 
+_civilian setVariable ["civilian_is_flee_state", false, false]; 
+
 
 _civilian addEventHandler ["FiredNear",  
-{ 
+{
+	// Set civilian to flee state
+	(_this select 0) setVariable ["civilian_is_flee_state", true, false];
+
 	// Find all buildings within 40m
 	_buildings = nearestObjects [getPos (_this select 0), ["house"], 40]; 
 	
@@ -27,16 +31,9 @@ _civilian addEventHandler ["FiredNear",
 	_destination = _possiblePositions select (floor random(count _possiblePositions));
 
 	if (isNil "_destination") then {
-
 		_destination = [getPos (_this select 0), 15, 40, 0, 0, 0, 0, [], getPos (_this select 0), getPos (_this select 0)] call BIS_fnc_findSafePos;
-
-		hint format ["No destination found for unit, set to %1.", _destination];
 	};
 	
-
-
-	
-
 	// Get the number of waypoints currently set for the civilian group
 	_civilianGroup = group (_this select 0);
 	_groupWaypoints = waypoints (_civilianGroup);
