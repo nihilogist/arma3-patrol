@@ -1,3 +1,4 @@
+if (isServer) then {
 _civilian = _this select 0;
 // Disable fleeing
 _civilian allowFleeing 0;
@@ -72,3 +73,5 @@ _civilian addEventHandler ["FiredNear",
 	};
 
 }];
+
+};
