@@ -2,6 +2,7 @@
 civilianSetup = compile preprocessFile "scripts\common\takistaniSetup.sqf";
 voiceSetup = compile preprocessFile "scripts\common\takistaniVoiceSetup.sqf";
 createInsurgentGroup = compile preprocessFile "scripts\common\createInsurgentGroup.sqf";
+createCivilianGroup = compile preprocessFile "scripts\common\createCivilianGroup.sqf";
 
 // Setup the possible cache locations in Ahmaday
 _ahmadayPossibleCachesLocation0 = [ahmaday_cache_0_loc, ahmaday_cache_00, ahmaday_cache_01, ahmaday_cache_02, ahmaday_cache_03, ahmaday_cache_04];
@@ -54,17 +55,6 @@ _cacheDefenseGroup = [_cacheLocationAhmaday select 0, _numberOfCacheDefenders] c
 {
   // if this cache is not the weapons cache location
   if (!(_x isEqualTo _cacheLocationAhmaday)) then {
-    _civilianGroup = createGroup civilian;
-    _civiliansAtLocation = (floor (random 3)) + 1;
-    for "_i" from 0 to _civiliansAtLocation do {
-    	// create a civilian and give them useful clothing
-	    _civilianUnit = _civilianGroup createUnit ["C_man_1", getPos (_x select 0), [], 5, "FORM"];
-	    _civilianUnit = [_civilianUnit] call civilianSetup;
-	    
-	    // add the standard civilian behaviour
-	    _handle = [_civilianUnit, 10] execVM "scripts\civilian-behaviour\civilianWandering.sqf"; 
-	    _handle2 = [_civilianUnit] execVM "scripts\civilian-behaviour\onFiredNearActionHandler.sqf";
-    };
-    _civilianGroup setBehaviour "SAFE";
+  	_civilianGroup = [_x select 0] call createCivilianGroup;
   };
 } forEach _ahmadayListAllCaches;
