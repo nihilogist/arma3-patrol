@@ -1,5 +1,7 @@
 disableChannels[]={{0,true,true},{1,false,true}};
 
+enableDebugConsole = 2;
+
 class CfgDebriefing
 {  
 	class End1
