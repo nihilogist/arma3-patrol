@@ -15,4 +15,5 @@ for "_i" from 0 to _numberOfAdditionalMembers do {
 	_cacheDefenseUnit = [_cacheDefenseUnit] call voiceSetup;
 };
 
+_cacheDefenseGroup enableDynamicSimulation true;
 _cacheDefenseGroup;
