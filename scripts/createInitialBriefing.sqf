@@ -1,8 +1,8 @@
-if (isServer) {
+if (isServer) then {
 	[area_hq, 
 		["Report for briefing", // title text
 		{
-			[area_hq, "Good morning. This morning's patrol will take you our to the west of base. You've two villages to check; full details are in the briefing notes here. Call in any updates across the radio."] remoteExec ['commandChat', 0]; 
+			[area_hq, "Good morning, Sergeant. Your patrol this morning is to take 2nd Squad out to the west of the base. We've heard reports that there is insurgency activity in those areas, so make sure that everything is safe and secure out there. Further details are in the briefing notes."] remoteExec ['commandChat', 0]; 
 	 		missionNamespace setVariable ['reported_for_duty', true, true]; 
 			["report_for_briefing","Succeeded",true] call BIS_fnc_taskSetState; 
 		}, // script on interaction

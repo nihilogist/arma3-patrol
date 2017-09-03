@@ -1,6 +1,7 @@
 // pre-process takistani setup
 civilianSetup = compile preprocessFile "scripts\common\takistaniSetup.sqf";
 voiceSetup = compile preprocessFile "scripts\common\takistaniVoiceSetup.sqf";
+createInsurgentGroup = compile preprocessFile "scripts\common\createInsurgentGroup.sqf";
 
 // Setup the possible cache locations in Ahmaday
 _ahmadayPossibleCachesLocation0 = [ahmaday_cache_0_loc, ahmaday_cache_00, ahmaday_cache_01, ahmaday_cache_02, ahmaday_cache_03, ahmaday_cache_04];
@@ -47,18 +48,7 @@ _cacheTypeAhmaday = _cacheTypes select (floor (random (count _cacheTypes)));
 
 // Now add a group of units to the area near the container
 _numberOfCacheDefenders = floor (random 3) + 1;
-_possibleCacheDefense = ["CUP_I_TK_GUE_Soldier", "CUP_I_TK_GUE_Guerilla_Medic", "CUP_I_TK_GUE_Sniper", "CUP_I_TK_GUE_Guerilla_Enfield"];
-
-_cacheDefenseGroup = createGroup resistance;
-
-_cacheDefenseUnit = _cacheDefenseGroup createUnit ["CUP_I_TK_GUE_Soldier_TL", getPos (_cacheLocationAhmaday select 0), [], 5, "FORM"];
-
-for "_i" from 0 to _numberOfCacheDefenders do {
-	_nextUnit = _possibleCacheDefense select (floor (random (count _possibleCacheDefense)));
-	_cacheDefenseUnit = _cacheDefenseGroup createUnit [_nextUnit, getPos (_cacheLocationAhmaday select 0), [], 5, "FORM"];
-	_cacheDefenseUnit = [_cacheDefenseUnit] call voiceSetup;
-	//[_cacheDefenseUnit, (_takistaniVoices select (floor (random (count _takistaniVoices))))] remoteExecCall ["setSpeaker", 0];
-};
+_cacheDefenseGroup = [_cacheLocationAhmaday select 0, _numberOfCacheDefenders] call createInsurgentGroup;
 
 // For every other cache area, add a civilians
 {
