@@ -12,8 +12,12 @@ _cacheDefenseUnit = _cacheDefenseGroup createUnit ["CUP_I_TK_GUE_Soldier_TL", _l
 for "_i" from 0 to _numberOfAdditionalMembers do {
 	_nextUnit = _possibleCacheDefense select (floor (random (count _possibleCacheDefense)));
 	_cacheDefenseUnit = _cacheDefenseGroup createUnit [_nextUnit, _locationForGroup, [], 5, "FORM"];
+	_cacheDefenseUnit addMagazine ["SmokeShell", 2];
 	_cacheDefenseUnit = [_cacheDefenseUnit] call voiceSetup;
 };
+
+_waypoint = _cacheDefenseGroup addWaypoint [_locationForGroup, 2];
+[_cacheDefenseGroup, 0] setWaypointType "HOLD";
 
 _cacheDefenseGroup enableDynamicSimulation true;
 _cacheDefenseGroup;
