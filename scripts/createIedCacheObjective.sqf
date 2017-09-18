@@ -12,7 +12,10 @@ _iedCacheContainer = [_objectiveLocation] call selectContainer;
 _iedCacheContainer addMagazineCargoGlobal ["IEDUrbanSmall_Remote_Mag", 5];
 
 // Now add a group of units to the area near the container
-_numberOfCacheDefenders = floor (random 3) + 1;
+_numberOfCacheDefenders = floor (random 2) + 1;
 _cacheDefenseGroup = [_objectiveLocation select 0, _numberOfCacheDefenders] call createInsurgentGroup;
+
+_createdMine = createMine ["APERSTripMine", (_objectiveLocation select 0), [], 2];
+resistance revealMine _createdMine;
 
 _objectiveLocation;

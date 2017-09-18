@@ -16,8 +16,5 @@ for "_i" from 0 to _numberOfAdditionalMembers do {
 	_cacheDefenseUnit = [_cacheDefenseUnit] call voiceSetup;
 };
 
-_waypoint = _cacheDefenseGroup addWaypoint [_locationForGroup, 2];
-[_cacheDefenseGroup, 0] setWaypointType "HOLD";
-
 _cacheDefenseGroup enableDynamicSimulation true;
 _cacheDefenseGroup;
