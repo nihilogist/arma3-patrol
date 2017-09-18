@@ -12,10 +12,6 @@ createIedCache = compile preprocessFile "scripts\createIedCacheObjective.sqf";
 missionNamespace setVariable ["objectives", [], true];
 missionNamespace setVariable ["debriefing_text", "This is the custom debriefing text.", true];
 
-// objectives should be of the format:
-// - objective type
-
-
 // Set up the objective types
 _objectiveTypes = ["weaponsCache", "iedCache"];
 // Choose the cache type in Ahmaday

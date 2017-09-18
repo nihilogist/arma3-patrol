@@ -7,7 +7,6 @@ missionNamespace setVariable ["objectives", _tempObjectives, true];
 
 // get the objective location
 _objectiveItemLocation = _this select 0;
-//_actualObjectiveItem = _objectiveItemLocation select 0;
 diag_log format ["Objective location %1", _objectiveItemLocation];
 
 // Select a container type and place it near the location

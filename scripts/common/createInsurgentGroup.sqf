@@ -1,4 +1,5 @@
 voiceSetup = compile preprocessFile "scripts\common\takistaniVoiceSetup.sqf";
+garrisonGroup = compile preprocessFile "scripts\common\garrisonGroup.sqf";
 
 _locationForGroup = _this select 0;
 _numberOfAdditionalMembers = _this select 1;
@@ -25,5 +26,9 @@ for "_i" from 0 to _numberOfAdditionalMembers do {
 
 _cacheDefenseGroup setCombatMode "YELLOW";
 _cacheDefenseGroup setBehaviour "STEALTH";
+diag_log format ["Garrisoning units"];
+[_cacheDefenseGroup, _locationForGroup, 20] call garrisonGroup;
+
+
 _cacheDefenseGroup enableDynamicSimulation true;
 _cacheDefenseGroup;
