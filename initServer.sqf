@@ -16,8 +16,7 @@ missionNamespace setVariable ["objectives", [], true];
 
 
 // Set up the objective types
-//_objectiveTypes = ["weaponsCache", "iedCache"];
-_objectiveTypes = ["weaponsCache"];
+_objectiveTypes = ["weaponsCache", "iedCache"];
 // Choose the cache type in Ahmaday
 _objectiveTypeAhmaday = _objectiveTypes select (floor (random (count _objectiveTypes)));
 diag_log format ["Objective type selected: %1", _objectiveTypeAhmaday];
@@ -27,7 +26,7 @@ _objectiveLocationAhmaday = [true] call selectAhmadayObjective;
 
 switch (_objectiveTypeAhmaday) do { 
 	case "weaponsCache" : {  _objectiveCreated = [_objectiveLocationAhmaday] call createWeaponsCache; }; 
-	//case "iedCache" : {  _objectiveCreated = [_objectiveLocationAhmaday] call createIedCache; }; 
+	case "iedCache" : {  _objectiveCreated = [_objectiveLocationAhmaday] call createIedCache; }; 
 	default {  /*...code...*/ }; 
 };
 
