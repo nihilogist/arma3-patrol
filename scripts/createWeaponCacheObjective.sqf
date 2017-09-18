@@ -8,14 +8,14 @@ missionNamespace setVariable ["objectives", _tempObjectives, true];
 
 // get the objective location
 _objectiveItemLocation = _this select 0;
-_actualObjectiveItem = _objectiveItemLocation select 0;
+//_actualObjectiveItem = _objectiveItemLocation select 0;
 diag_log format ["Objective location %1", _objectiveItemLocation];
 
 // Select a container type and place it near the location
 _possibleCacheContainers = ["Land_WoodenBox_F"];
 _cacheContainerType = _possibleCacheContainers select (floor (random (count _possibleCacheContainers)));
 
-_cacheContainerPosition = [(getPos _actualObjectiveItem), 2, 10, 1, 0, 5, 0, []] call BIS_fnc_findSafePos;
+_cacheContainerPosition = [(getPos _objectiveItemLocation), 2, 10, 1, 0, 5, 0, []] call BIS_fnc_findSafePos;
 
 _actualCacheContainer = _cacheContainerType createVehicle _cacheContainerPosition;
 
@@ -28,6 +28,6 @@ _actualCacheContainer addMagazineCargoGlobal ["30Rnd_762x39_Mag_F", 10];
 
 // Now add a group of units to the area near the container
 _numberOfCacheDefenders = floor (random 4) + 1;
-_cacheDefenseGroup = [_objectiveItemLocation select 0, _numberOfCacheDefenders] call createInsurgentGroup;
+_cacheDefenseGroup = [_objectiveItemLocation, _numberOfCacheDefenders] call createInsurgentGroup;
 
 _objectiveItemLocation;

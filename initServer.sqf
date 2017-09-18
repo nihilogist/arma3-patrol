@@ -36,7 +36,7 @@ _allAhmadayObjectives = [false] call selectAhmadayObjective;
 {
   // if this cache is not the weapons cache location
   if (!(_x isEqualTo _objectiveLocationAhmaday)) then {
-  	_civilianGroup = [_x select 0] call createCivilianGroup;
+  	_civilianGroup = [_x] call createCivilianGroup;
   };
 } forEach _allAhmadayObjectives;
 

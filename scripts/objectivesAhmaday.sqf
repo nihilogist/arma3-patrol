@@ -1,4 +1,4 @@
-_ahmadayObjectiveLocation0 = [ahmaday_cache_0_loc, [ahmaday_cache_00, ahmaday_cache_01, ahmaday_cache_02, ahmaday_cache_03, ahmaday_cache_04]];
+/*_ahmadayObjectiveLocation0 = [ahmaday_cache_0_loc, [ahmaday_cache_00, ahmaday_cache_01, ahmaday_cache_02, ahmaday_cache_03, ahmaday_cache_04]];
 _ahmadayObjectiveLocation1 = [ahmaday_cache_1_loc, [ahmaday_cache_10]];
 _ahmadayObjectiveLocation2 = [ahmaday_cache_2_loc, [ahmaday_cache_20, ahmaday_cache_21]];
 _ahmadayObjectiveLocation3 = [ahmaday_cache_3_loc, [ahmaday_cache_30]];
@@ -10,6 +10,14 @@ _ahmadayAllObjectives = [
 	_ahmadayObjectiveLocation2,
 	_ahmadayObjectiveLocation3,
 	_ahmadayObjectiveLocation4
+];*/
+
+_ahmadayAllObjectives = [
+	ahmaday_cache_0_loc,
+	ahmaday_cache_1_loc,
+	ahmaday_cache_2_loc,
+	ahmaday_cache_3_loc,
+	ahmaday_cache_4_loc
 ];
 
 _getSpecificObjective = _this select 0;

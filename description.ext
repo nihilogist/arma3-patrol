@@ -1,4 +1,14 @@
-disableChannels[]={{0,true,true},{1,false,true}};
+/*
+0 = Global
+1 = Side
+2 = Command
+3 = Group
+4 = Vehicle
+5 = Direct
+6 = System
+*/
+disableChannels[]={[1, true, true], [2, false, false],[6, true, true]};
+#include "voiceControl.cpp"
 
 enableDebugConsole = 2;
 
