@@ -4,14 +4,34 @@ enableDebugConsole = 2;
 
 class CfgDebriefing
 {  
-	class End1
+	class CompleteSuccessPatrol
 	{
-		title = "Operational debrief";
+		title = "Operational Debrief";
 		subtitle = "Patrol villages west of FOB Peregrine";
-		description = "2nd Squad successfully carried out a patrol, encompassing the villages of Ahmaday and Landay.";
+		description = "2nd Squad carried out a patrol to the west of FOB Peregrine. All objectives were completed.";
 		pictureBackground = "";
 		picture = "b_inf";
 		pictureColor[] = {0.0,0.3,0.6,1};
+	};
+
+	class PartialSuccessPatrol
+	{
+		title = "Operational Debrief";
+		subtitle = "Patrol villages west of FOB Peregrine";
+		description = "2nd Squad carried out a patrol to the west of FOB Peregrine. While most objectives were completed, subsequent operations suggest that the patrol missed key elements of the enemy infratructure.";
+		pictureBackground = "";
+		picture = "b_inf";
+		pictureColor[] = {0.0,0.3,0.6,1};
+	};
+
+	class loser
+	{
+		title = "Mission Failed";
+		subtitle = "";
+		description = "2nd Squad carried out a patrol to the west of FOB Peregrine, but all contact was lost. It appears that they encountered significant insurgent resistance and were all killed in action.";
+		pictureBackground = "";
+		picture = "KIA";
+		pictureColor[] = {0.6,0.1,0.2,1};
 	};
 };
 
