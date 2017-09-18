@@ -15,3 +15,12 @@ class CfgDebriefing
 	};
 };
 
+class CfgDebriefingSections
+{
+	class MissedObjectives
+	{
+		title = "Subsequent Operations";
+		variable = "debriefing_text";
+	};
+};
+

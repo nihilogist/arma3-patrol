@@ -1,4 +1,5 @@
 if (isServer) then {
+	missionNamespace setVariable ['reported_for_duty', false, true];
 	[area_hq, 
 		["Report for briefing", // title text
 		{
@@ -11,7 +12,7 @@ if (isServer) then {
 		false, // show 'window'
 		true, // hide on use
 		"", // no shortcut
-		"leader group player == player", // condition to show
+		"(leader group player == player) && !(missionNamespace getVariable ['reported_for_duty', false])", // condition to show
 		3 // radius in meters
 		]
 	] remoteExec ["addAction", 0, area_hq];

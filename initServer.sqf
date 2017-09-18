@@ -10,6 +10,7 @@ createIedCache = compile preprocessFile "scripts\createIedCacheObjective.sqf";
 
 // Set up the public mission variable array
 missionNamespace setVariable ["objectives", [], true];
+missionNamespace setVariable ["debriefing_text", "This is the custom debriefing text.", true];
 
 // objectives should be of the format:
 // - objective type
