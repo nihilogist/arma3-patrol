@@ -1,31 +1,25 @@
-// pre-process takistani setup
 civilianSetup = compile preprocessFile "scripts\common\takistaniSetup.sqf";
 voiceSetup = compile preprocessFile "scripts\common\takistaniVoiceSetup.sqf";
 createInsurgentGroup = compile preprocessFile "scripts\common\createInsurgentGroup.sqf";
 createCivilianGroup = compile preprocessFile "scripts\common\createCivilianGroup.sqf";
-selectAhmadayObjective = compile preprocessFile "scripts\objectivesAhmaday.sqf";
-selectAhmadayCamp = compile preprocessFile "scripts\campsAhmaday.sqf";
-createWeaponsCache = compile preprocessFile "scripts\createWeaponCacheObjective.sqf";
-createIedCache = compile preprocessFile "scripts\createIedCacheObjective.sqf";
+selectObjectiveType = compile preprocessFile "scripts\objectives\objectiveTypes.sqf";
+createObjective = compile preprocessFile "scripts\objectives\createObjective.sqf";
+selectAhmadayObjective = compile preprocessFile "scripts\objectives\ahmaday\objectiveMarkersAhmaday.sqf";
+selectInsurgentCamp = compile preprocessFile "scripts\objectives\camps\campLocations.sqf";
+
 
 // Set up the public mission variable array
 missionNamespace setVariable ["objectives", [], true];
+missionNamespace setVariable ["completed_objectives", [], true];
 missionNamespace setVariable ["debriefing_text", "This is the custom debriefing text.", true];
 
-// Set up the objective types
-_objectiveTypes = ["weaponsCache", "iedCache"];
-// Choose the cache type in Ahmaday
-_objectiveTypeAhmaday = _objectiveTypes select (floor (random (count _objectiveTypes)));
-diag_log format ["Objective type selected: %1", _objectiveTypeAhmaday];
+// Get the objective type for Ahmaday
+_objectiveTypeAhmaday = [] call selectObjectiveType;
 
 // Choose the actual objective location in Ahmaday
 _objectiveLocationAhmaday = [true] call selectAhmadayObjective;
 
-switch (_objectiveTypeAhmaday) do { 
-	case "weaponsCache" : {  _objectiveCreated = [_objectiveLocationAhmaday] call createWeaponsCache; }; 
-	case "iedCache" : {  _objectiveCreated = [_objectiveLocationAhmaday] call createIedCache; }; 
-	default {  /*...code...*/ }; 
-};
+_objectiveCreated = [_objectiveTypeAhmaday, _objectiveLocationAhmaday] call createObjective;
 
 // For every other cache area, add a civilians
 _allAhmadayObjectives = [false] call selectAhmadayObjective;
@@ -37,7 +31,8 @@ _allAhmadayObjectives = [false] call selectAhmadayObjective;
 } forEach _allAhmadayObjectives;
 
 // Add some insurgents to one of the nearby camps
-_insurgentCamp = [] call selectAhmadayCamp;
+_insurgentCamp = [] call selectInsurgentCamp;
 _numberOfInsurgentsInCamp = (floor(random 3) + 1) * 2;
 _insurgentCampDefense = [_insurgentCamp, _numberOfInsurgentsInCamp] call createInsurgentGroup;
+missionNamespace setVariable ["insurgentCamp", [_insurgentCamp, _numberOfInsurgentsInCamp], true];
 

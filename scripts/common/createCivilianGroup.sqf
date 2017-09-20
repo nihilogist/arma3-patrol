@@ -13,6 +13,7 @@ for "_i" from 0 to _civiliansAtLocation do {
     // add the standard civilian behaviour
     _handle = [_civilianUnit, 10] execVM "scripts\civilian-behaviour\civilianWandering.sqf"; 
     _handle2 = [_civilianUnit] execVM "scripts\civilian-behaviour\onFiredNearActionHandler.sqf";
+    _handle3 = [_civilianUnit] execVM "scripts\civilian-behaviour\civilianInterrogationOptions.sqf";
 };
 _civilianGroup setBehaviour "SAFE";
 _civilianGroup enableDynamicSimulation true;
