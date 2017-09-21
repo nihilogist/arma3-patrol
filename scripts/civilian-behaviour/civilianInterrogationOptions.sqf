@@ -16,7 +16,7 @@ if (isServer) then {
 	    "(_caller distance _target < 3)",                                                           // Condition for the action to progress
 	    {(_this select 0) disableAI "MOVE"},                                                                                         // Code executed when action starts
 	    {},                                                                                         // Code executed on every progress tick
-	    {_chanceOfInformation = 100; _d100roll = floor (random 100); if (_d100roll < _chanceOfInformation) then {[(_this select 0)] execVM "scripts\civilian-behaviour\giveCampIntel.sqf"};}, // Code executed on completion
+	    {[(_this select 0)] execVM "scripts\civilian-behaviour\giveCampIntel.sqf";}, // Code executed on completion
 	    {(_this select 0) enableAI "MOVE"},                                                                                  // Code executed on interrupted
 	    [],                                                                                  // Arguments passed to the scripts as _this select 3
 	    12,                                                                                  // Action duration [s]
