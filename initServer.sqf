@@ -7,6 +7,8 @@ createObjective = compile preprocessFile "scripts\objectives\createObjective.sqf
 selectAhmadayObjective = compile preprocessFile "scripts\objectives\ahmaday\objectiveMarkersAhmaday.sqf";
 selectInsurgentCamp = compile preprocessFile "scripts\objectives\camps\campLocations.sqf";
 
+execVM "scripts\ied.sqf";
+
 
 // Set up the public mission variable array
 missionNamespace setVariable ["objectives", [], true];
