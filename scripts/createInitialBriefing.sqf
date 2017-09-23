@@ -10,7 +10,7 @@ if (isServer) then {
 		}, // script on interaction
 		nil, // arguments
 		1, // priority
-		false, // show 'window'
+		true, // show 'window'
 		true, // hide on use
 		"", // no shortcut
 		"(leader group player == player) && !(missionNamespace getVariable ['reported_for_duty', false])", // condition to show

@@ -24,7 +24,7 @@ _weaponsCache addEventHandler ["ContainerOpened", {
 	    "(_caller distance _target < 3)",                                                           // Condition for the action to progress
 	    {},                                                                                         // Code executed when action starts
 	    {},                                                                                         // Code executed on every progress tick
-	    {["weaponsCacheTask","Succeeded",true] call BIS_fnc_taskSetState; deleteVehicle _target; _tempObjectives = missionNamespace getVariable "objectives";_tempObjectives = _tempObjectives - ["weaponsCache"];missionNamespace setVariable ["objectives", _tempObjectives, true];}, // Code executed on completion
+	    {["weaponsCacheTask","Succeeded",true] call BIS_fnc_taskSetState; deleteVehicle _target; _tempObjectives = missionNamespace getVariable "objectives";_tempObjectives = _tempObjectives - ["weaponsCache"];missionNamespace setVariable ["objectives", _tempObjectives, true];_tempObjectives = missionNamespace getVariable "completed_objectives";_tempObjectives = _tempObjectives + ["weaponsCache"];missionNamespace setVariable ["completed_objectives", _tempObjectives, true];}, // Code executed on completion
 	    {},                                                                                  // Code executed on interrupted
 	    [],                                                                                  // Arguments passed to the scripts as _this select 3
 	    12,                                                                                  // Action duration [s]
