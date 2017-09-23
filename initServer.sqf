@@ -36,3 +36,4 @@ _numberOfInsurgentsInCamp = (floor(random 3) + 1) * 2;
 _insurgentCampDefense = [_insurgentCamp, _numberOfInsurgentsInCamp] call createInsurgentGroup;
 missionNamespace setVariable ["insurgentCamp", [_insurgentCamp, _numberOfInsurgentsInCamp], true];
 
+

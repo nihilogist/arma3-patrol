@@ -22,6 +22,12 @@ for "_i" from 0 to _numberOfAdditionalMembers do {
 	_cacheDefenseUnit = _cacheDefenseGroup createUnit [_nextUnit, _locationForGroup, [], 5, "FORM"];
 	_cacheDefenseUnit addMagazine ["SmokeShell", 2];
 	_cacheDefenseUnit = [_cacheDefenseUnit] call voiceSetup;
+     _cacheDefenseUnit setSkill ["aimingAccuracy", 0.4];
+     _cacheDefenseUnit setSkill ["aimingShake", 0.4];
+     _cacheDefenseUnit setSkill ["aimingSpeed", 0.4];
+     _cacheDefenseUnit setSkill ["spotDistance", 0.4];
+     _cacheDefenseUnit setSkill ["spotTime", 0.6];
+     _cacheDefenseUnit setSkill ["commanding", 0.4];
 };
 
 _cacheDefenseGroup setCombatMode "YELLOW";

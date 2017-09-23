@@ -1,0 +1,1 @@
+supportReinforcementsCommand = [player,"callReinforcements", nil, nil, "reinforcementsAvailable"] call BIS_fnc_addCommMenuItem;
