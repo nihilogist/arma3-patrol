@@ -19,6 +19,10 @@ class Header
 	gameType = Coop; // MP mission type
 };
 
+// respawn = 3;
+// respawnDelay = 2;
+// respawnOnStart = 0;
+
 class CfgDebriefing
 {  
 	class CompleteSuccessPatrol

@@ -37,3 +37,4 @@ _insurgentCampDefense = [_insurgentCamp, _numberOfInsurgentsInCamp] call createI
 missionNamespace setVariable ["insurgentCamp", [_insurgentCamp, _numberOfInsurgentsInCamp], true];
 
 
+
