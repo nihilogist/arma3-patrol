@@ -10,6 +10,14 @@
 
 
 enableDebugConsole = 1;
+loadScreen =  "pictures\loading-image.jpg";
+author = "dave3";
+onLoadName = "Dynamic Takistan Patrol";
+onLoadMission = "British forces on a counter-insurgency patrol in the mountains of Takistan.";
+class Header
+{
+	gameType = Coop; // MP mission type
+};
 
 class CfgDebriefing
 {  

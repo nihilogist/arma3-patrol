@@ -9,7 +9,7 @@ diag_log format ["Reinforcements called to %1", _position];
 
 _reinforcementsGroup = reinforcement_team;
 _reinforcementsGroup setCombatMode "YELLOW";
-_reinforcementsGroup setBehaviour "CARELESS";
+_reinforcementsGroup setBehaviour "SAFE";
 _reinforcementsGroup setSpeedMode "FULL";
 _reinforcementUnits = units _reinforcementsGroup;
 _reinforcementsTransport = reinforcement_transport;

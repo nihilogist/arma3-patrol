@@ -1,4 +1,4 @@
-player sideChat "added action handler to ied cache.";
+player sideChat "added action handler to cache.";
 _iedCache = _this select 0;
  
 // Add an 'on container opened' action handler

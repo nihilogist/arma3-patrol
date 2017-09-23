@@ -1,4 +1,4 @@
-player sideChat "added action handler to weapon cache.";
+player sideChat "added action handler to cache.";
 _weaponsCache = _this select 0;
 
 
