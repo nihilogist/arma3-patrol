@@ -32,6 +32,9 @@ for "_i" from 0 to (count _groupWaypoints) do {
   [_x] orderGetIn true;
 } forEach _reinforcementUnits;
 
+// get position of caller:
+_positionToReinforce = getPos _caller;
+
 _moveToTeamWaypoint = _reinforcementsGroup addWaypoint [getPos(_caller), 1];
 _moveToTeamWaypoint setWaypointType "GETOUT";
 _moveToTeamWaypoint setWaypointCompletionRadius 100;

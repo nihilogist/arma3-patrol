@@ -23,7 +23,7 @@ _actualCacheContainer addWeaponCargoGlobal ["arifle_AKM_F", 2];
 _actualCacheContainer addMagazineCargoGlobal ["30Rnd_762x39_Mag_F", 10];
 
 // Set up the weapons cache task
-[_actualCacheContainer] call weaponsCacheTaskSetup;
+_jipID = [_actualCacheContainer] remoteExec ["dave3_fnc_addWeaponCacheActionHandler", 0];
 
 // Now add a group of units to the area near the container
 _numberOfCacheDefenders = floor (random 4) + 1;

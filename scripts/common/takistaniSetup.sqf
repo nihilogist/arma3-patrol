@@ -42,16 +42,16 @@ _civilianHeadgear = [
 ];
 
 _civilianFacewear = [
-	"TRYK_Beard_BK",
-	"TRYK_Beard_BW",
-	"TRYK_Beard_BK2",
-	"TRYK_Beard_BW2",
-	"TRYK_Beard_BK3",
-	"TRYK_Beard_BW3",
-	"TRYK_Beard_BK4",
-	"TRYK_Beard_BW4",
-	"TRYK_Beard_BK6",
-	"TRYK_Beard_BW6",
+	// "TRYK_Beard_BK",
+	// "TRYK_Beard_BW",
+	// "TRYK_Beard_BK2",
+	// "TRYK_Beard_BW2",
+	// "TRYK_Beard_BK3",
+	// "TRYK_Beard_BW3",
+	// "TRYK_Beard_BK4",
+	// "TRYK_Beard_BW4",
+	// "TRYK_Beard_BK6",
+	// "TRYK_Beard_BW6",
 	"CUP_TK_NeckScarf",
 	"CUP_FR_NeckScarf",
 	"CUP_FR_NeckScarf2"
@@ -70,9 +70,9 @@ _takistaniVoices = [
 
 _civilianUnit = _this select 0;
 
-_civilianUnit addUniform (_civilianUniforms select (floor (random (count _civilianUniforms))));
-_civilianUnit addHeadgear (_civilianHeadgear select (floor (random (count _civilianHeadgear))));
-_civilianUnit addGoggles (_civilianFacewear select (floor (random (count _civilianFacewear))));
-[_civilianUnit, (_takistaniVoices select (floor (random (count _takistaniVoices))))] remoteExecCall ["setSpeaker", 0];
+_civilianUnit addUniform (selectRandom _civilianUniforms);
+_civilianUnit addHeadgear (selectRandom _civilianHeadgear);
+_civilianUnit addGoggles (selectRandom _civilianFacewear);
+[_civilianUnit, (selectRandom _takistaniVoices)] remoteExecCall ["setSpeaker", 0];
 
 _civilianUnit;
