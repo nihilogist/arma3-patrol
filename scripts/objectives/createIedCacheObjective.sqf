@@ -1,4 +1,4 @@
-iedCacheTaskSetup = compile preprocessFile "scripts\iedCache.sqf";
+iedCacheTaskSetup = compile preprocessFile "scripts\objectives\iedCache.sqf";
 
 // Add the objective to the global objective list
 _tempObjectives = missionNamespace getVariable "objectives";

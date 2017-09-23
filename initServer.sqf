@@ -4,8 +4,11 @@ createInsurgentGroup = compile preprocessFile "scripts\common\createInsurgentGro
 createCivilianGroup = compile preprocessFile "scripts\common\createCivilianGroup.sqf";
 selectObjectiveType = compile preprocessFile "scripts\objectives\objectiveTypes.sqf";
 createObjective = compile preprocessFile "scripts\objectives\createObjective.sqf";
-selectAhmadayObjective = compile preprocessFile "scripts\objectives\ahmaday\objectiveMarkersAhmaday.sqf";
-selectInsurgentCamp = compile preprocessFile "scripts\objectives\camps\campLocations.sqf";
+selectAhmadayObjective = compile preprocessFile "scripts\locations\ahmaday\objectiveMarkersAhmaday.sqf";
+selectInsurgentCamp = compile preprocessFile "scripts\locations\camps\campLocations.sqf";
+
+getAllLocations = compile preprocessFile "scripts\locations\allLocations.sqf";
+createObjectiveAtLocationConfiguration = compile preprocessFile "scripts\objectives\createObjectiveAtLocationConfiguration.sqf";
 
 execVM "scripts\ied.sqf";
 
@@ -15,22 +18,17 @@ missionNamespace setVariable ["objectives", [], true];
 missionNamespace setVariable ["completed_objectives", [], true];
 missionNamespace setVariable ["debriefing_text", "This is the custom debriefing text.", true];
 
-// Get the objective type for Ahmaday
-_objectiveTypeAhmaday = [] call selectObjectiveType;
+// Get all possible objective locations
+_allLocations = [] call getAllLocations;
+diag_log format ["All mission locations %1", _allLocations];
 
-// Choose the actual objective location in Ahmaday
-_objectiveLocationAhmaday = [true] call selectAhmadayObjective;
-
-_objectiveCreated = [_objectiveTypeAhmaday, _objectiveLocationAhmaday] call createObjective;
-
-// For every other cache area, add a civilians
-_allAhmadayObjectives = [false] call selectAhmadayObjective;
+// Iterate over that collection
 {
-  // if this cache is not the weapons cache location
-  if (!(_x isEqualTo _objectiveLocationAhmaday)) then {
-  	_civilianGroup = [_x] call createCivilianGroup;
-  };
-} forEach _allAhmadayObjectives;
+  // Create an objective at that location
+  diag_log format ["Analysing location configuration %1", _x];
+  [_x] call createObjectiveAtLocationConfiguration;
+} forEach _allLocations;
+
 
 // Add some insurgents to one of the nearby camps
 _insurgentCamp = [] call selectInsurgentCamp;

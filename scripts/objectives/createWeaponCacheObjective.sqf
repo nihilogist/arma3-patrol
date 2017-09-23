@@ -1,4 +1,4 @@
-weaponsCacheTaskSetup = compile preprocessFile "scripts\weaponsCache.sqf";
+weaponsCacheTaskSetup = compile preprocessFile "scripts\objectives\weaponsCache.sqf";
 
 // Add the objective to the global objective list
 _tempObjectives = missionNamespace getVariable "objectives";

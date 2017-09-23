@@ -25,8 +25,8 @@ _buildingsWithSpace = [];
 diag_log format ["Buildings with space for group: %1", _buildingsWithSpace];
 
 if (count _buildingsWithSpace > 0) then {
-     _selectedBuildingToGarrison = _buildingsWithSpace select (floor random(count _nearbyBuildings));
+     _selectedBuildingToGarrison = selectRandom _buildingsWithSpace;
      _possiblePositions = _selectedBuildingToGarrison call BIS_fnc_buildingPositions;
-     _destination = _possiblePositions select (floor random(count _possiblePositions));
+     _destination = selectRandom _possiblePositions;
      _waypoint = (_groupToGarrison) addWaypoint [_destination, 0];     
 };

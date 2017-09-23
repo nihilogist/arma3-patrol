@@ -1,6 +1,6 @@
 // Arguments: [objectiveType, objectiveLocation]
-createWeaponsCache = compile preprocessFile "scripts\createWeaponCacheObjective.sqf";
-createIedCache = compile preprocessFile "scripts\createIedCacheObjective.sqf";
+createWeaponsCache = compile preprocessFile "scripts\objectives\createWeaponCacheObjective.sqf";
+createIedCache = compile preprocessFile "scripts\objectives\createIedCacheObjective.sqf";
 
 _objectiveType = _this select 0;
 _objectiveLocation = _this select 1;

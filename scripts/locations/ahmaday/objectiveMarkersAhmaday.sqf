@@ -1,10 +1,12 @@
 _ahmadayAllObjectives = [
-	ahmaday_cache_0_loc,
-	ahmaday_cache_1_loc,
-	ahmaday_cache_2_loc,
-	ahmaday_cache_3_loc,
-	ahmaday_cache_4_loc
+	ahmaday_compound_01,
+	ahmaday_compound_02,
+	ahmaday_compound_03,
+	ahmaday_compound_04,
+	ahmaday_fields
 ];
+
+diag_log format ["Possible objectives for Ahmaday %1", _ahmadayAllObjectives];
 
 _getSpecificObjective = _this select 0;
 
