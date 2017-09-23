@@ -1,6 +1,8 @@
 _hamletAllObjectives = [
 	hamlet_compound_01,
-	hamlet_compound_02
+	hamlet_compound_02,
+	hamlet_fields_01,
+	hamlet_fields_02
 ];
 
 diag_log format ["Possible objectives for hamlet %1", _hamletAllObjectives];

@@ -26,8 +26,13 @@ if (_distanceToCamp < 500) then {
 	_chanceOfKnowingWhereCampIs = 33;
 	_accuracyOfKnowledge = 75;
 } else {
-	_chanceOfKnowingWhereCampIs = 10;
-	_accuracyOfKnowledge = 40;
+	if (_distanceToCamp < 1500) then {
+	  _chanceOfKnowingWhereCampIs = 10;
+	  _accuracyOfKnowledge = 40;
+	} else {
+	  _chanceOfKnowingWhereCampIs = 1;
+	  _accuracyOfKnowledge = 1;
+	};
 };
 
 // Chance of telling: leave this at 100% for now
