@@ -10,6 +10,8 @@ selectInsurgentCamp = compile preprocessFile "scripts\locations\camps\campLocati
 getAllLocations = compile preprocessFile "scripts\locations\allLocations.sqf";
 createObjectiveAtLocationConfiguration = compile preprocessFile "scripts\objectives\createObjectiveAtLocationConfiguration.sqf";
 
+createCivilianDriver = compile preprocessFile "scripts\common\createCivilianDriver.sqf";
+
 execVM "scripts\ied.sqf";
 
 
@@ -35,6 +37,12 @@ _insurgentCamp = [] call selectInsurgentCamp;
 _numberOfInsurgentsInCamp = (floor(random 3) + 1) * 2;
 _insurgentCampDefense = [_insurgentCamp, _numberOfInsurgentsInCamp] call createInsurgentGroup;
 missionNamespace setVariable ["insurgentCamp", [_insurgentCamp, _numberOfInsurgentsInCamp], true];
+
+// diag_log format ["Spawning civilian driver %1", true];
+// for "_i" from 0 to 4 do {
+// 	[] call createCivilianDriver;
+// };
+
 
 
 
