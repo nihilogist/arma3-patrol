@@ -45,7 +45,7 @@ class CfgDebriefing
 		pictureColor[] = {0.0,0.3,0.6,1};
 	};
 
-	class loser
+	class endDeath
 	{
 		title = "Mission Failed";
 		subtitle = "";
